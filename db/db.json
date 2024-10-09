@@ -1,0 +1,35 @@
+{
+  "items": [
+    {
+      "nama": "Canai",
+      "harga": 5000,
+      "categoryId": 1,
+      "id": 1
+    },
+    {
+      "nama": "tes",
+      "harga": 123123,
+      "categoryId": 1,
+      "id": 2
+    },
+    {
+      "nama": "Es Jery",
+      "harga": 123456,
+      "categoryId": 1,
+      "id": 3
+    },
+    {
+      "nama": "Roti Bakar",
+      "harga": 5000,
+      "categoryId": 1,
+      "id": 4
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "nama": "Makanan"
+    }
+  ],
+  "transaction": []
+}
