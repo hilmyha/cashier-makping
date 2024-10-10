@@ -13,8 +13,11 @@ type Category = { id: number; nama: string };
 
 type Transaction = {
   id: number;
+  transactionId: string;
   quantity: number;
   total: number;
+  retur: number;
+  status: string;
   items: Items[];
 };
 

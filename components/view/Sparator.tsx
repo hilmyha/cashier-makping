@@ -1,11 +1,11 @@
 import { View, Text, StyleSheet } from "react-native";
 import { ReactNode } from "react";
 
-type SparatorProps = {
+type SheetTrigger = {
   children: ReactNode;
 };
 
-export default function Sparator({ children }: SparatorProps) {
+export default function SheetTrigger({ children }: SheetTrigger) {
   return <View style={styles.container}>{children}</View>;
 }
 

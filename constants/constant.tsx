@@ -5,6 +5,7 @@ export const globalStyles = StyleSheet.create({
     flex: 1,
     padding: 16,
   },
+  bottomSheetStyle: {},
   shadows: {
     backgroundColor: "#FFFFFF",
     // Shadow for iOS

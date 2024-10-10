@@ -4,7 +4,7 @@ import InputText from "../input/InputText";
 import { Category, Items } from "../../utils/types";
 import { Picker } from "@react-native-picker/picker";
 import PrimaryButton from "../button/PrimaryButton";
-import { postItem, updateItem } from "../../services/item.service";
+import { deleteItem, postItem, updateItem } from "../../services/item.service";
 
 type ItemsFormProps = {
   onSuccess: () => void;
@@ -26,7 +26,7 @@ export default function ItemsForm({
     barangData?.category.id.toString() || null
   );
 
-  // handle create item
+  // handle create and update item
   const handleCreateItem = async () => {
     // validation
     if (!nama) {
@@ -68,6 +68,17 @@ export default function ItemsForm({
     }
   };
 
+  // handle delete item
+  const handleDeleteItem = async () => {
+    try {
+      setError(null);
+      await deleteItem(barangData!.id);
+      onSuccess();
+    } catch (error: any) {
+      setError(error.message);
+    }
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>
@@ -105,7 +116,16 @@ export default function ItemsForm({
         </View>
       </View>
       {error && <Text style={[styles.text, { color: "red" }]}>{error}</Text>}
-      <PrimaryButton onPress={handleCreateItem} text="Simpan" />
+      <View style={styles.section}>
+        <PrimaryButton onPress={handleCreateItem} text="Simpan" />
+        {barangData && (
+          <PrimaryButton
+            onPress={handleDeleteItem}
+            text="Hapus"
+            iconName="trash"
+          />
+        )}
+      </View>
     </View>
   );
 }
@@ -128,7 +148,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   picker: {
-    backgroundColor: "#EDEDFF",
+    backgroundColor: "#ECECECEC",
     borderRadius: 10,
   },
 });

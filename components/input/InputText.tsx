@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "#EDEDFF",
+    backgroundColor: "#ECECECEC",
     borderRadius: 10,
   },
   textInput: {

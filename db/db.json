@@ -13,9 +13,9 @@
       "id": 2
     },
     {
-      "nama": "Es Jery",
-      "harga": 123456,
-      "categoryId": 1,
+      "nama": "Es Jeruk",
+      "harga": 3000,
+      "categoryId": 2,
       "id": 3
     },
     {
@@ -26,7 +26,7 @@
     },
     {
       "nama": "Kue Bolu",
-      "harga": 10000,
+      "harga": 3000,
       "categoryId": 1,
       "id": 5
     }
@@ -35,7 +35,81 @@
     {
       "id": 1,
       "nama": "Makanan"
+    },
+    {
+      "id": 2,
+      "nama": "Minuman"
     }
   ],
-  "transaction": []
+  "transactions": [
+    {
+      "transactionId": "tx-1728580909883",
+      "quantity": 1,
+      "total": 34000,
+      "retur": 0,
+      "status": "pending",
+      "items": [],
+      "id": 1
+    },
+    {
+      "transactionId": "tx-1728581018529",
+      "quantity": 1,
+      "total": 11000,
+      "retur": 0,
+      "status": "pending",
+      "items": [
+        {
+          "nama": "Canai",
+          "harga": 5000,
+          "categoryId": 1,
+          "id": 1,
+          "category": {
+            "id": 1,
+            "nama": "Makanan"
+          }
+        },
+        {
+          "nama": "Es Jeruk",
+          "harga": 3000,
+          "categoryId": 2,
+          "id": 3,
+          "category": {
+            "id": 2,
+            "nama": "Minuman"
+          }
+        }
+      ],
+      "id": 2
+    },
+    {
+      "transactionId": "tx-1728581121263",
+      "quantity": 1,
+      "total": 16000,
+      "retur": 0,
+      "status": "pending",
+      "items": [
+        {
+          "nama": "Kue Bolu",
+          "harga": 3000,
+          "categoryId": 1,
+          "id": 5,
+          "category": {
+            "id": 1,
+            "nama": "Makanan"
+          }
+        },
+        {
+          "nama": "Roti Bakar",
+          "harga": 5000,
+          "categoryId": 1,
+          "id": 4,
+          "category": {
+            "id": 1,
+            "nama": "Makanan"
+          }
+        }
+      ],
+      "id": 3
+    }
+  ]
 }

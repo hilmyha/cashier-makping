@@ -142,7 +142,10 @@ export default function barang() {
         >
           <BottomSheetView>
             <ItemsForm
-              onSuccess={getBarangData}
+              onSuccess={() => {
+                getBarangData();
+                bottomSheetRef.current?.dismiss();
+              }}
               category={categoryMemo}
               barangData={selectedBarang}
             />

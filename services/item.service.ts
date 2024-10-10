@@ -25,3 +25,8 @@ export const updateItem = async (
   const response = await instance.put(`/items/${id}`, credentials);
   return response.data;
 };
+
+export const deleteItem = async (id: number) => {
+  const response = await instance.delete(`/items/${id}`);
+  return response.data;
+};
