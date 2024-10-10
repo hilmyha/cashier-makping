@@ -2,7 +2,7 @@
   "items": [
     {
       "nama": "Canai",
-      "harga": 5000,
+      "harga": 4000,
       "categoryId": 1,
       "id": 1
     },
@@ -17,18 +17,6 @@
       "harga": 3000,
       "categoryId": 2,
       "id": 3
-    },
-    {
-      "nama": "Roti Bakar",
-      "harga": 5000,
-      "categoryId": 1,
-      "id": 4
-    },
-    {
-      "nama": "Kue Bolu",
-      "harga": 3000,
-      "categoryId": 1,
-      "id": 5
     }
   ],
   "categories": [
@@ -43,31 +31,12 @@
   ],
   "transactions": [
     {
-      "transactionId": "tx-1728580909883",
+      "transactionId": "tx-1728585616682",
       "quantity": 1,
-      "total": 34000,
-      "retur": 0,
-      "status": "pending",
-      "items": [],
-      "id": 1
-    },
-    {
-      "transactionId": "tx-1728581018529",
-      "quantity": 1,
-      "total": 11000,
+      "total": 22000,
       "retur": 0,
       "status": "pending",
       "items": [
-        {
-          "nama": "Canai",
-          "harga": 5000,
-          "categoryId": 1,
-          "id": 1,
-          "category": {
-            "id": 1,
-            "nama": "Makanan"
-          }
-        },
         {
           "nama": "Es Jeruk",
           "harga": 3000,
@@ -77,32 +46,92 @@
             "id": 2,
             "nama": "Minuman"
           }
-        }
-      ],
-      "id": 2
-    },
-    {
-      "transactionId": "tx-1728581121263",
-      "quantity": 1,
-      "total": 16000,
-      "retur": 0,
-      "status": "pending",
-      "items": [
+        },
         {
-          "nama": "Kue Bolu",
-          "harga": 3000,
+          "nama": "Roti Gembong",
+          "harga": 12000,
           "categoryId": 1,
-          "id": 5,
+          "id": 2,
           "category": {
             "id": 1,
             "nama": "Makanan"
           }
         },
         {
-          "nama": "Roti Bakar",
-          "harga": 5000,
+          "nama": "Canai",
+          "harga": 4000,
           "categoryId": 1,
-          "id": 4,
+          "id": 1,
+          "category": {
+            "id": 1,
+            "nama": "Makanan"
+          }
+        }
+      ],
+      "id": 1
+    },
+    {
+      "transactionId": "tx-1728585658512",
+      "quantity": 1,
+      "total": 18000,
+      "retur": 0,
+      "status": "pending",
+      "items": [
+        {
+          "nama": "Es Jeruk",
+          "harga": 3000,
+          "categoryId": 2,
+          "id": 3,
+          "category": {
+            "id": 2,
+            "nama": "Minuman"
+          }
+        },
+        {
+          "nama": "Roti Gembong",
+          "harga": 12000,
+          "categoryId": 1,
+          "id": 2,
+          "category": {
+            "id": 1,
+            "nama": "Makanan"
+          }
+        }
+      ],
+      "id": 2
+    },
+    {
+      "transactionId": "tx-1728585670378",
+      "quantity": 1,
+      "total": 23000,
+      "retur": 0,
+      "status": "pending",
+      "items": [
+        {
+          "nama": "Es Jeruk",
+          "harga": 3000,
+          "categoryId": 2,
+          "id": 3,
+          "category": {
+            "id": 2,
+            "nama": "Minuman"
+          }
+        },
+        {
+          "nama": "Roti Gembong",
+          "harga": 12000,
+          "categoryId": 1,
+          "id": 2,
+          "category": {
+            "id": 1,
+            "nama": "Makanan"
+          }
+        },
+        {
+          "nama": "Canai",
+          "harga": 4000,
+          "categoryId": 1,
+          "id": 1,
           "category": {
             "id": 1,
             "nama": "Makanan"

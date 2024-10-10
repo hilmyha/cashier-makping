@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Alert } from "react-native";
 import React, { useState } from "react";
 import InputText from "../input/InputText";
 import { Category, Items } from "../../utils/types";
@@ -79,6 +79,23 @@ export default function ItemsForm({
     }
   };
 
+  const comfirmDeleteItem = () => {
+    Alert.alert(
+      "Konfirmasi Penghapusan",
+      "Apakah Anda yakin ingin menghapus kategori ini?",
+      [
+        {
+          text: "Tidak",
+          style: "cancel",
+        },
+        {
+          text: "Ya",
+          onPress: handleDeleteItem,
+        },
+      ]
+    );
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>
@@ -120,7 +137,7 @@ export default function ItemsForm({
         <PrimaryButton onPress={handleCreateItem} text="Simpan" />
         {barangData && (
           <PrimaryButton
-            onPress={handleDeleteItem}
+            onPress={comfirmDeleteItem}
             text="Hapus"
             iconName="trash"
           />

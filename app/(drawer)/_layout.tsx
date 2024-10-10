@@ -9,7 +9,7 @@ export default function DrawerLayout() {
       <Drawer
         screenOptions={{
           swipeEnabled: true,
-          swipeEdgeWidth: 150,
+          swipeEdgeWidth: 50,
           headerShadowVisible: false,
           headerStyle: {
             backgroundColor: "transparent",
