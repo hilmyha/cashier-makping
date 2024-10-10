@@ -13,3 +13,15 @@ export const postItem = async (credentials: {
   const response = await instance.post("/items", credentials);
   return response.data;
 };
+
+export const updateItem = async (
+  id: number,
+  credentials: {
+    nama: string;
+    harga: number;
+    categoryId: number;
+  }
+) => {
+  const response = await instance.put(`/items/${id}`, credentials);
+  return response.data;
+};

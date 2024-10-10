@@ -22,6 +22,7 @@ import { getCategory } from "../../services/category.service";
 import ItemCard from "../../components/card/ItemCard";
 import PrimaryButton from "../../components/button/PrimaryButton";
 import SheetTrigger from "../../components/view/Sparator";
+import FilterCategory from "../../components/view/FilterCategory";
 
 export default function barang() {
   // state
@@ -32,8 +33,18 @@ export default function barang() {
   const [barang, setBarang] = useState<Items[]>([]);
   const [kategori, setKategori] = useState<Category[]>([]);
 
+  const [selectedBarang, setSelectedBarang] = useState<Items | null>(null);
+  const [selectedKategori, setSelectedKategori] = useState<number | null>(null);
+
   const snapPoints = useMemo(() => ["25%", "65%"], []);
   const categoryMemo = useMemo(() => kategori, [kategori]);
+  const filteredBarang = useMemo(() => {
+    if (selectedKategori === null) {
+      return barang;
+    }
+
+    return barang.filter((item) => item.category.id === selectedKategori);
+  }, [barang, selectedKategori]);
 
   // get barang data
   const getBarangData = async () => {
@@ -71,8 +82,17 @@ export default function barang() {
     }, [])
   );
 
+  const handleBarangSelect = (item: Items) => {
+    setSelectedBarang(item);
+    bottomSheetRef.current?.present();
+  };
+  const handleCategorySelect = (categoryId: number | null) => {
+    setSelectedKategori(categoryId);
+  };
+
   const bottomSheetRef = useRef<BottomSheetModal>(null);
   const handlePresentModalPress = useCallback(() => {
+    setSelectedBarang(null);
     bottomSheetRef.current?.present();
   }, []);
 
@@ -82,19 +102,29 @@ export default function barang() {
         style={globalStyles.container}
         contentContainerStyle={{ paddingBottom: 140 }}
       >
+        <FilterCategory
+          kategori={categoryMemo}
+          selectedCategory={selectedKategori}
+          onCategorySelect={handleCategorySelect}
+        />
+
         <View style={{ gap: 8 }}>
           {loading ? (
             <ActivityIndicator size="large" color="#0000ff" />
           ) : error ? (
             <Text>{error}</Text>
-          ) : (
-            barang.map((item) => (
+          ) : filteredBarang.length > 0 ? (
+            filteredBarang.map((item) => (
               <ItemCard
                 key={item.id}
                 item={item}
-                onPress={() => console.log(item.id)}
+                onPress={() => {
+                  handleBarangSelect(item);
+                }}
               />
             ))
+          ) : (
+            <Text>Tidak ada data</Text>
           )}
         </View>
       </ScrollView>
@@ -105,12 +135,17 @@ export default function barang() {
 
       <BottomSheetModalProvider>
         <BottomSheetModal
+          style={globalStyles.shadows}
           ref={bottomSheetRef}
           snapPoints={snapPoints}
           index={1}
         >
           <BottomSheetView>
-            <ItemsForm onSuccess={getBarangData} category={categoryMemo} />
+            <ItemsForm
+              onSuccess={getBarangData}
+              category={categoryMemo}
+              barangData={selectedBarang}
+            />
           </BottomSheetView>
         </BottomSheetModal>
       </BottomSheetModalProvider>

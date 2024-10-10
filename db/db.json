@@ -7,8 +7,8 @@
       "id": 1
     },
     {
-      "nama": "tes",
-      "harga": 123123,
+      "nama": "Roti Gembong",
+      "harga": 12000,
       "categoryId": 1,
       "id": 2
     },
@@ -23,6 +23,12 @@
       "harga": 5000,
       "categoryId": 1,
       "id": 4
+    },
+    {
+      "nama": "Kue Bolu",
+      "harga": 10000,
+      "categoryId": 1,
+      "id": 5
     }
   ],
   "categories": [

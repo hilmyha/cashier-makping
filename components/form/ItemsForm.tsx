@@ -1,37 +1,61 @@
 import { View, Text, StyleSheet } from "react-native";
 import React, { useState } from "react";
 import InputText from "../input/InputText";
-import { Category } from "../../utils/types";
+import { Category, Items } from "../../utils/types";
 import { Picker } from "@react-native-picker/picker";
 import PrimaryButton from "../button/PrimaryButton";
-import { postItem } from "../../services/item.service";
+import { postItem, updateItem } from "../../services/item.service";
 
 type ItemsFormProps = {
   onSuccess: () => void;
   category: Category[];
+  barangData?: Items | null;
 };
 
-export default function ItemsForm({ onSuccess, category }: ItemsFormProps) {
+export default function ItemsForm({
+  onSuccess,
+  category,
+  barangData,
+}: ItemsFormProps) {
   const [error, setError] = useState<null | string>(null);
-  const [nama, setNama] = useState<string>("");
-  const [harga, setHarga] = useState<string>("");
-  const [categoryId, setCategoryId] = useState<string | null>("");
+  const [nama, setNama] = useState<string>(barangData?.nama || "");
+  const [harga, setHarga] = useState<string>(
+    barangData?.harga.toString() || ""
+  );
+  const [categoryId, setCategoryId] = useState<string | null>(
+    barangData?.category.id.toString() || null
+  );
 
   // handle create item
   const handleCreateItem = async () => {
     // validation
-    if (!nama || !harga || !categoryId) {
-      setError("Data tidak boleh ada yang kosong");
+    if (!nama) {
+      setError("Nama harus diisi");
+      return;
+    } else if (!harga || parseInt(harga) <= 0 || isNaN(parseInt(harga))) {
+      setError("Harga harus diisi dan harus bertipe angka");
+      return;
+    } else if (!categoryId) {
+      setError("Kategori harus diisi");
       return;
     }
 
     try {
       setError(null);
-      const res = await postItem({
-        nama,
-        harga: parseInt(harga),
-        categoryId: parseInt(categoryId),
-      });
+
+      if (barangData) {
+        await updateItem(barangData.id, {
+          nama,
+          harga: parseInt(harga),
+          categoryId: parseInt(categoryId),
+        });
+      } else {
+        await postItem({
+          nama,
+          harga: parseInt(harga),
+          categoryId: parseInt(categoryId),
+        });
+      }
 
       // reset form
       setNama("");
@@ -46,7 +70,9 @@ export default function ItemsForm({ onSuccess, category }: ItemsFormProps) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Buat Barang</Text>
+      <Text style={styles.title}>
+        {barangData ? "Ubah Barang" : "Buat Barang"}
+      </Text>
       <View style={styles.section}>
         <InputText
           placeholder="Nama"
@@ -78,7 +104,7 @@ export default function ItemsForm({ onSuccess, category }: ItemsFormProps) {
           </Picker>
         </View>
       </View>
-      {error && <Text style={styles.text}>{error}</Text>}
+      {error && <Text style={[styles.text, { color: "red" }]}>{error}</Text>}
       <PrimaryButton onPress={handleCreateItem} text="Simpan" />
     </View>
   );
@@ -95,7 +121,7 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: "bold",
     color: "#696969",
-    fontSize: 18,
+    fontSize: 20,
   },
   text: {
     color: "#696969",
