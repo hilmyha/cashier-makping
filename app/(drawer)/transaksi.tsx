@@ -11,9 +11,9 @@ import SheetTrigger from "../../components/view/Sparator";
 import PrimaryButton from "../../components/button/PrimaryButton";
 import { Items, Transaction } from "../../utils/types";
 import { getItem } from "../../services/item.service";
-import { useFocusEffect } from "expo-router";
+import { router, useFocusEffect } from "expo-router";
 import ItemCard from "../../components/card/ItemCard";
-import TransactionItemCard from "../../components/card/TransactionItemCard";
+import TransactionListCard from "../../components/card/TransactionListCard";
 import TransactionItemList from "../../components/list/TransactionItemList";
 import { postTransaksi } from "../../services/transaction.service";
 
@@ -37,6 +37,21 @@ export default function transaksi() {
       getBarangData();
     }, [])
   );
+
+  function generateTransactionId() {
+    const date = new Date();
+    const formattedDate = date.toISOString().slice(0, 10).replace(/-/g, "");
+    const hours = ("0" + date.getHours()).slice(-2);
+    const minutes = ("0" + date.getMinutes()).slice(-2);
+    const time = `${hours}:${minutes}`;
+
+    const randomPart = Math.random()
+      .toString(36)
+      .substring(2, 10)
+      .toUpperCase();
+
+    return `TRX${formattedDate}-${time}-${randomPart}`;
+  }
 
   // fungsi untuk menambah jumlah barang ke transaksi
   const handleAddItem = (selectedItem: Items, change: number) => {
@@ -75,7 +90,8 @@ export default function transaksi() {
             quantity: change,
             total: selectedItem.harga * change,
             items: [selectedItem], // tambahkan item baru
-            retur: 0,
+            return: 0,
+            payment: 0,
             status: "pending",
           },
         ];
@@ -89,20 +105,18 @@ export default function transaksi() {
 
   const handleSubmitOrder = async () => {
     try {
-      const response = await postTransaksi({
-        transactionId: `tx-${Date.now()}`,
+      await postTransaksi({
+        transactionId: generateTransactionId(),
         quantity: 1,
         total: handleCountTotalPrice,
-        retur: 0,
+        return: 0,
+        payment: 0,
         status: "pending",
         items: transaksi.flatMap((trans) => trans.items),
       });
 
-      if (response) {
-        console.log("success");
-      }
-
       setTransaksi([]);
+      router.replace("/(drawer)");
     } catch (error: any) {
       console.log(error.message);
     } finally {
@@ -121,7 +135,7 @@ export default function transaksi() {
     <GestureHandlerRootView>
       <ScrollView style={globalStyles.container}>
         {barang.map((item) => (
-          <TransactionItemCard
+          <TransactionListCard
             key={item.id}
             item={item}
             transaksi={transaksi}

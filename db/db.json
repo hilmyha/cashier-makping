@@ -31,22 +31,13 @@
   ],
   "transactions": [
     {
-      "transactionId": "tx-1728585616682",
+      "transactionId": "tx-1728590014373",
       "quantity": 1,
-      "total": 22000,
-      "retur": 0,
+      "total": 18000,
+      "return": 0,
+      "payment": 0,
       "status": "pending",
       "items": [
-        {
-          "nama": "Es Jeruk",
-          "harga": 3000,
-          "categoryId": 2,
-          "id": 3,
-          "category": {
-            "id": 2,
-            "nama": "Minuman"
-          }
-        },
         {
           "nama": "Roti Gembong",
           "harga": 12000,
@@ -58,23 +49,24 @@
           }
         },
         {
-          "nama": "Canai",
-          "harga": 4000,
-          "categoryId": 1,
-          "id": 1,
+          "nama": "Es Jeruk",
+          "harga": 3000,
+          "categoryId": 2,
+          "id": 3,
           "category": {
-            "id": 1,
-            "nama": "Makanan"
+            "id": 2,
+            "nama": "Minuman"
           }
         }
       ],
       "id": 1
     },
     {
-      "transactionId": "tx-1728585658512",
+      "transactionId": "TRX20241011-1728590094647",
       "quantity": 1,
       "total": 18000,
-      "retur": 0,
+      "return": 0,
+      "payment": 0,
       "status": "pending",
       "items": [
         {
@@ -101,20 +93,21 @@
       "id": 2
     },
     {
-      "transactionId": "tx-1728585670378",
+      "transactionId": "TRX20241010-02:57-Q938SI6Z",
       "quantity": 1,
-      "total": 23000,
-      "retur": 0,
+      "total": 20000,
+      "return": 0,
+      "payment": 0,
       "status": "pending",
       "items": [
         {
-          "nama": "Es Jeruk",
-          "harga": 3000,
-          "categoryId": 2,
-          "id": 3,
+          "nama": "Canai",
+          "harga": 4000,
+          "categoryId": 1,
+          "id": 1,
           "category": {
-            "id": 2,
-            "nama": "Minuman"
+            "id": 1,
+            "nama": "Makanan"
           }
         },
         {
@@ -126,7 +119,60 @@
             "id": 1,
             "nama": "Makanan"
           }
-        },
+        }
+      ],
+      "id": 3
+    },
+    {
+      "transactionId": "TRX20241011-10:09-F08DIY0D",
+      "quantity": 1,
+      "total": 24000,
+      "return": 0,
+      "payment": 0,
+      "status": "pending",
+      "items": [
+        {
+          "nama": "Roti Gembong",
+          "harga": 12000,
+          "categoryId": 1,
+          "id": 2,
+          "category": {
+            "id": 1,
+            "nama": "Makanan"
+          }
+        }
+      ],
+      "id": 4
+    },
+    {
+      "transactionId": "TRX20241011-10:10-WQOAWE3V",
+      "quantity": 1,
+      "total": 12000,
+      "return": 0,
+      "payment": 0,
+      "status": "pending",
+      "items": [
+        {
+          "nama": "Roti Gembong",
+          "harga": 12000,
+          "categoryId": 1,
+          "id": 2,
+          "category": {
+            "id": 1,
+            "nama": "Makanan"
+          }
+        }
+      ],
+      "id": 5
+    },
+    {
+      "transactionId": "TRX20241011-10:10-4MKL4263",
+      "quantity": 1,
+      "total": 10000,
+      "return": 0,
+      "payment": 0,
+      "status": "pending",
+      "items": [
         {
           "nama": "Canai",
           "harga": 4000,
@@ -136,9 +182,19 @@
             "id": 1,
             "nama": "Makanan"
           }
+        },
+        {
+          "nama": "Es Jeruk",
+          "harga": 3000,
+          "categoryId": 2,
+          "id": 3,
+          "category": {
+            "id": 2,
+            "nama": "Minuman"
+          }
         }
       ],
-      "id": 3
+      "id": 6
     }
   ]
 }

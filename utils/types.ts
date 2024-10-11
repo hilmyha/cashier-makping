@@ -16,7 +16,8 @@ type Transaction = {
   transactionId: string;
   quantity: number;
   total: number;
-  retur: number;
+  payment: number;
+  return: number;
   status: string;
   items: Items[];
 };

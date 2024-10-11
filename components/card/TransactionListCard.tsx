@@ -2,19 +2,19 @@ import { View, Text, StyleSheet, Button } from "react-native";
 import React from "react";
 import { Items, Transaction } from "../../utils/types";
 
-type TransactionItemCardProps = {
+type TransactionListCardProps = {
   item: Items;
   transaksi: Transaction[];
   ascendCount: (item: Items) => void;
   descendCount: (item: Items) => void;
 };
 
-export default function TransactionItemCard({
+export default function TransactionListCard({
   item,
   transaksi,
   ascendCount,
   descendCount,
-}: TransactionItemCardProps) {
+}: TransactionListCardProps) {
   return (
     <View style={styles.container}>
       <View>
